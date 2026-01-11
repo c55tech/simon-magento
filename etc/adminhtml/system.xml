@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="simon" translate="label" sortOrder="200">
+            <label>SIMON</label>
+        </tab>
+        <section id="simon" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>SIMON Settings</label>
+            <tab>simon</tab>
+            <resource>Simon_Integration::config</resource>
+            <group id="api" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>API Configuration</label>
+                <field id="api_url" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>API URL</label>
+                    <comment>Base URL of your SIMON API server (e.g., http://localhost:3000)</comment>
+                </field>
+                <field id="auth_key" translate="label comment" type="obscure" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Auth Key</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <comment>SIMON authentication key</comment>
+                </field>
+            </group>
+            <group id="client" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Client Configuration</label>
+                <field id="client_id" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Client ID</label>
+                    <comment>Your SIMON client ID (automatically set after client creation)</comment>
+                </field>
+            </group>
+            <group id="site" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Site Configuration</label>
+                <field id="site_id" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Site ID</label>
+                    <comment>Your SIMON site ID (automatically set after site creation)</comment>
+                </field>
+            </group>
+            <group id="cron" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Cron Settings</label>
+                <field id="enable_cron" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Automatic Submission</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable automatic data submission via Magento cron</comment>
+                </field>
+                <field id="cron_interval" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cron Interval (seconds)</label>
+                    <comment>Time between automatic submissions (default: 3600 = 1 hour)</comment>
+                    <validate>validate-number validate-greater-than-zero</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
