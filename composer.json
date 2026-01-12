@@ -21,9 +21,9 @@
     ],
     "support": {
         "email": "support@simon.example.com",
-        "issues": "https://github.com/your-org/simon/issues",
-        "source": "https://github.com/your-org/simon",
-        "docs": "https://github.com/your-org/simon/blob/main/modules/simon-magento/README.md"
+        "issues": "https://github.com/c55tech/simon-magento/issues",
+        "source": "https://github.com/c55tech/simon-magento",
+        "docs": "https://github.com/c55tech/simon-magento/blob/main/README.md"
     },
     "require": {
         "php": ">=8.1",
