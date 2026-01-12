@@ -6,14 +6,30 @@ Magento 2 module for integrating with the SIMON monitoring system.
 
 ### Via Composer (Recommended)
 
-Add the repository to your `composer.json`:
+Add the repository using Composer commands:
+
+```bash
+# Add the repository
+composer config repositories.simon-magento vcs git@github.c55:c55tech/simon-magento.git
+
+# Install the module
+composer require simon/integration:dev-main
+
+# Enable and configure
+php bin/magento module:enable Simon_Integration
+php bin/magento setup:upgrade
+php bin/magento setup:di:compile
+php bin/magento cache:flush
+```
+
+Alternatively, you can manually add the repository to your `composer.json`:
 
 ```json
 {
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/c55tech/simon-magento"
+      "url": "git@github.c55:c55tech/simon-magento.git"
     }
   ],
   "require": {
