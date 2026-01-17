@@ -50,15 +50,19 @@ class SubmitData
 
         $siteData = $this->dataCollector->collect();
         $baseUrl = $this->storeManager->getStore()->getBaseUrl();
+        $siteName = $this->scopeConfig->getValue('general/store_information/name');
 
-        $payload = [
+        $payload = array_merge([
             'client_id' => (int) $clientId,
             'site_id' => (int) $siteId,
-            'cms_type' => 'magento',
-            'site_name' => $this->scopeConfig->getValue('general/store_information/name'),
-            'site_url' => $baseUrl,
-            'data' => $siteData,
-        ];
+            'auth_key' => $authKey,
+            'application_type' => 'magento',
+            'site' => [
+                'name' => $siteName,
+                'url' => $baseUrl,
+                'application_type' => 'magento',
+            ],
+        ], $siteData);
 
         if ($this->apiClient->submit('intake', $payload)) {
             $this->logger->info('SIMON: Data submitted successfully via cron');
